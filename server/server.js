@@ -1,9 +1,9 @@
-import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
-import mongoose from 'mongoose';
-import apiRoutes from './routes/api.js';
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import apiRoutes from "./routes/api.js";
 
 // Setup environment
 dotenv.config();
@@ -15,18 +15,21 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log('MongoDB connected')).catch(err => console.error(err));
+mongoose
+	.connect(process.env.MONGO_URI, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	})
+	.then(() => console.log("MongoDB connected"))
+	.catch((err) => console.error(err));
 
 // API routes
-app.use('/api', apiRoutes);
+app.use("/api", apiRoutes);
 
 // Serve frontend
-app.use(express.static(path.join(__dirname, '../client/build')));
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '../client/build/index.html'))
+app.use(express.static(path.join(__dirname, "client_build")));
+app.get("*", (req, res) =>
+	res.sendFile(path.join(__dirname, "client_build", "index.html"))
 );
 
 // Start server
