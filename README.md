@@ -1,0 +1,1 @@
+This is a simple MERN App that is part of a training program. The main focus was to deploy a fullstack MERN App to a cloud service. This was deployed to Render. You can view the final project on this link https://checkpoint-deployment-9vvx.onrender.com/
